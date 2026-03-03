@@ -10,9 +10,14 @@ public class metodo {
             o.setNombre(sc.next());
             System.out.println("valor:");
             o.setPrecio(sc.nextDouble());
-            System.out.println("disponibilidad:");
-            o.setSw(0);
-            o.setDisp(sc.nextBoolean());
+            System.out.println("Esta disponible?");
+            if(sc.next().equalsIgnoreCase("si"))
+                o.setDisp(true);
+            else
+                o.setDisp(false);
+            
+          
+        
             m [i][j]=o;
 
         }    
