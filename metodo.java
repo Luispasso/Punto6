@@ -7,6 +7,7 @@ public class metodo {
         for (int j = 0; j < m.length; j++) {
             objsup o= new objsup();
             System.out.println("nombre del producto");
+            
             o.setNombre(sc.next());
             System.out.println("valor:");
             o.setPrecio(sc.nextDouble());
@@ -17,7 +18,7 @@ public class metodo {
                 o.setDisp(false);
             
           
-        
+            
             m [i][j]=o;
 
         }    
@@ -25,9 +26,16 @@ public class metodo {
         
         return m;
     }
-    public static void mercado(objsup[][]m){
+    public int mercado(objsup[][]m, int opc){
+
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                m[i][j].setSw(0);
+            }
+        }
+        
         objsup[][] s=new objsup[2][2];
-  
+        int con = 0;
         for (int i = 0; i < s.length; i++) {
         for (int j = 0; j < s.length; j++) {
            
@@ -41,6 +49,7 @@ public class metodo {
                     if(m[j2][k] != null && m[j2][k].isDisp()){
                         s[i][j]=m[j2][k];
                         m[j2][k].setSw(1);
+                        con++;
                          break encontrado;
                     }
                 }
@@ -48,11 +57,15 @@ public class metodo {
             }
         }    
         }
-   
-         imprimir(s);
+        if(opc == 1)
+         imprimir(s, opc, con);
+
+         return con;
     }
    
-public static void imprimir(objsup[][]s) {
+public static void imprimir(objsup[][]s, int opc, int con) {
+if(opc == 1)
+{
 for (int i = 0; i < s.length; i++) {
         for (int j = 0; j < s.length; j++) {
              if(s[i][j] !=null){
@@ -61,4 +74,9 @@ for (int i = 0; i < s.length; i++) {
     }
 }    
 }
+   else
+    System.out.println("EL NUMERO TOTAL DE PRODUCTOS QUE ESTAN EN OFERTA ES: " + con);
+
+}
+
 }
